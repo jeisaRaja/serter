@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cdkae514q0u66"]
+
+[ext_resource type="Script" uid="uid://dk670nm8tfrn6" path="res://levels/floor_01/floor_01.gd" id="1_rjey2"]
+[ext_resource type="PackedScene" uid="uid://dxihvvukwe32d" path="res://actors/player/player.tscn" id="1_umnyj"]
+[ext_resource type="PackedScene" uid="uid://tvrjcdujloc" path="res://actors/entity/entity.tscn" id="2_bweoo"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wf2kw"]
+vertices = PackedVector3Array(-10.25, 0.45, -3.75, -8.75, 0.45, -3.75, -9, 0.45, -9, -11, 0.45, -2.5, -19, 0.45, -9, -19, 0.45, -2.5, 10.5, 0.45, -3.75, 11.25, 0.45, -2.5, 12.75, 0.45, -2.5, 12.75, 0.45, -6, 14, 0.45, -9, 14, 0.45, -6.75, 15.25, 0.45, -6, 19, 0.45, -9, 15.25, 0.45, 5.25, 14, 0.45, 6, 14, 0.45, 9, 19, 0.45, 9, -10.25, 0.45, 1, -8.5, 0.45, 1, -8.5, 0.45, -1.25, -10.25, 0.45, -1.25, -11, 0.45, 2.25, -19, 0.45, 2.25, 10.5, 0.45, -1.25, 10.5, 0.45, 1, 11.25, 0.45, 2.25, 12.75, 0.45, 2.25, -10, 0.45, 9, -10, 0.45, 3.5, -19, 0.45, 9, 10.5, 0.45, 3.5, 12.75, 0.45, 5.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 10), PackedInt32Array(10, 6, 1), PackedInt32Array(10, 1, 2), PackedInt32Array(10, 11, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(12, 13, 14), PackedInt32Array(14, 13, 17), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(18, 22, 21), PackedInt32Array(21, 22, 3), PackedInt32Array(3, 22, 23), PackedInt32Array(3, 23, 5), PackedInt32Array(7, 8, 24), PackedInt32Array(24, 8, 25), PackedInt32Array(25, 8, 26), PackedInt32Array(26, 8, 27), PackedInt32Array(24, 25, 20), PackedInt32Array(20, 25, 19), PackedInt32Array(29, 28, 22), PackedInt32Array(22, 28, 23), PackedInt32Array(23, 28, 30), PackedInt32Array(26, 27, 31), PackedInt32Array(31, 27, 32), PackedInt32Array(32, 16, 31), PackedInt32Array(31, 16, 29), PackedInt32Array(29, 16, 28), PackedInt32Array(32, 15, 16)]
+agent_radius = 1.0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bweoo"]
+data = PackedVector3Array(-10, -1.5, 0.15, -10, -1.5, -0.15, -10, 1.5, -0.15, 10, -1.5, -0.15, -10, -1.5, -0.15, -10, -1.5, 0.15, -10, 1.5, -0.15, -10, -1.5, -0.15, 10, -1.5, -0.15, -10, 1.5, -0.15, -10, 1.5, 0.15, -10, -1.5, 0.15, -10, -1.5, 0.15, -10, 1.5, 0.15, 10, 1.5, 0.15, 10, 1.5, 0.15, -10, 1.5, 0.15, -10, 1.5, -0.15, -10, -1.5, 0.15, 10, -1.5, 0.15, 10, -1.5, -0.15, 10, 1.5, 0.15, 10, -1.5, 0.15, -10, -1.5, 0.15, 10, -1.5, -0.15, 10, -1.5, 0.15, 10, 1.5, 0.15, 10, -1.5, -0.15, 10, 1.5, -0.15, -10, 1.5, -0.15, -10, 1.5, -0.15, 10, 1.5, -0.15, 10, 1.5, 0.15, 10, 1.5, 0.15, 10, 1.5, -0.15, 10, -1.5, -0.15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rjey2"]
+data = PackedVector3Array(-5.180786, -1.5, 0.15, -5.180786, -1.5, -0.15, -5.180786, 1.5, -0.15, 5.180786, -1.5, -0.15, -5.180786, -1.5, -0.15, -5.180786, -1.5, 0.15, -5.180786, 1.5, -0.15, -5.180786, -1.5, -0.15, 5.180786, -1.5, -0.15, -5.180786, 1.5, -0.15, -5.180786, 1.5, 0.15, -5.180786, -1.5, 0.15, -5.180786, -1.5, 0.15, -5.180786, 1.5, 0.15, 5.180786, 1.5, 0.15, 5.180786, 1.5, 0.15, -5.180786, 1.5, 0.15, -5.180786, 1.5, -0.15, -5.180786, -1.5, 0.15, 5.180786, -1.5, 0.15, 5.180786, -1.5, -0.15, 5.180786, 1.5, 0.15, 5.180786, -1.5, 0.15, -5.180786, -1.5, 0.15, 5.180786, -1.5, -0.15, 5.180786, -1.5, 0.15, 5.180786, 1.5, 0.15, 5.180786, -1.5, -0.15, 5.180786, 1.5, -0.15, -5.180786, 1.5, -0.15, -5.180786, 1.5, -0.15, 5.180786, 1.5, -0.15, 5.180786, 1.5, 0.15, 5.180786, 1.5, 0.15, 5.180786, 1.5, -0.15, 5.180786, -1.5, -0.15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_umnyj"]
+data = PackedVector3Array(-20, -0.05, 10, -20, -0.05, -10, -20, 0.05, -10, 20, -0.05, -10, -20, -0.05, -10, -20, -0.05, 10, -20, 0.05, -10, -20, -0.05, -10, 20, -0.05, -10, -20, 0.05, -10, -20, 0.05, 10, -20, -0.05, 10, -20, -0.05, 10, -20, 0.05, 10, 20, 0.05, 10, 20, 0.05, 10, -20, 0.05, 10, -20, 0.05, -10, -20, -0.05, 10, 20, -0.05, 10, 20, -0.05, -10, 20, 0.05, 10, 20, -0.05, 10, -20, -0.05, 10, 20, -0.05, -10, 20, -0.05, 10, 20, 0.05, 10, 20, -0.05, -10, 20, 0.05, -10, -20, 0.05, -10, -20, 0.05, -10, 20, 0.05, -10, 20, 0.05, 10, 20, 0.05, 10, 20, 0.05, -10, 20, -0.05, -10)
+
+[node name="Floor01" type="Node3D" unique_id=1956236836]
+script = ExtResource("1_rjey2")
+
+[node name="Player" parent="." unique_id=68945334 instance=ExtResource("1_umnyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.031578, 3.0440717, -6.6174192)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=616493242]
+transform = Transform3D(-3.090862e-08, -0.7071068, 0.7071068, -3.090862e-08, 0.7071068, 0.7071068, -1, 0, -4.3711392e-08, 21.413704, 6.2245493, 0)
+light_color = Color(0.93982965, 0.89811563, 0.72580314, 1)
+light_energy = 2.0
+spot_range = 20.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=527583182]
+transform = Transform3D(-3.090862e-08, -0.7071068, 0.7071068, -3.090862e-08, 0.7071068, 0.7071068, -1, 0, -4.3711392e-08, -0.5602112, 6.2245493, 0)
+light_color = Color(0.93982965, 0.89811563, 0.72580314, 1)
+light_energy = 2.0
+spot_range = 20.0
+
+[node name="Entity" parent="." unique_id=1536275457 instance=ExtResource("2_bweoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9499999, 7)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=662718337]
+navigation_mesh = SubResource("NavigationMesh_wf2kw")
+
+[node name="Wall" type="StaticBody3D" parent="NavigationRegion3D" unique_id=2121916893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, -2.5420885)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Wall" unique_id=277557041]
+size = Vector3(20, 3, 0.3)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Wall" unique_id=883099926]
+shape = SubResource("ConcavePolygonShape3D_bweoo")
+
+[node name="Wall3" type="StaticBody3D" parent="NavigationRegion3D" unique_id=109016491]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 14.059894, 1.55, -0.37481976)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Wall3" unique_id=230067190]
+size = Vector3(10.361572, 3, 0.3)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Wall3" unique_id=762163442]
+shape = SubResource("ConcavePolygonShape3D_rjey2")
+
+[node name="Wall2" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1243325020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 2.159182)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Wall2" unique_id=1073042947]
+size = Vector3(20, 3, 0.3)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Wall2" unique_id=2027123747]
+shape = SubResource("ConcavePolygonShape3D_bweoo")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=97957263]
+
+[node name="CSG" type="CSGBox3D" parent="NavigationRegion3D/Floor" unique_id=1014216157]
+size = Vector3(40, 0.1, 20)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=965661571]
+shape = SubResource("ConcavePolygonShape3D_umnyj")
+
+[node name="Checkpoints" type="Node3D" parent="." unique_id=1263376171]
+
+[node name="Lobby" type="Marker3D" parent="Checkpoints" unique_id=498714966 groups=["checkpoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.404297, 0.25611305, 7.9776335)
+
+[node name="Desk" type="Marker3D" parent="Checkpoints" unique_id=310725124 groups=["checkpoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.404297, 0.25611305, -7.1455345)
+
+[node name="Test" type="Marker3D" parent="Checkpoints" unique_id=768047268 groups=["checkpoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.559687, 0.25611305, -7.1455345)
+
+[node name="Test2" type="Marker3D" parent="Checkpoints" unique_id=1450346836 groups=["checkpoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.559687, 0.25611305, 7.124748)
