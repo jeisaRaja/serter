@@ -3,7 +3,7 @@ class_name EntityVision
 
 @export var raycast: RayCast3D
 
-var max_range: float = 15.0
+var max_range: float = 25.0
 var fov_degrees: int = 100
 var check_interval: float = 0.1
 var _timer: float = 0.0
@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	if _timer < check_interval:
 		return
 	_timer = 0.0
+	_evaluate()
 
 
 func _evaluate():
@@ -24,6 +25,7 @@ func _evaluate():
 		return
 
 	var dist: float = entity.global_position.distance_to(player.global_position)
+	print("dist is %d" % dist)
 	if dist > max_range:
 		return
 
@@ -34,6 +36,7 @@ func _evaluate():
 		return
 
 	if _is_blocked(player):
+		print("blocked")
 		return
 
 	var dist_factor: float = 1.0 - clamp(dist / max_range, 0.0, 1.0)
@@ -42,11 +45,11 @@ func _evaluate():
 	var is_clear := angle_deg < fov_degrees * 0.3
 
 	var strength := dist_factor * light_factor * move_factor
+	print(strength)
 	entity.perception.on_vision(strength, is_clear, player.global_position)
 
 
 func can_see_player_now() -> bool:
-	# instant boolean check, used by Chase state — no throttling, no strength calc
 	if entity == null or entity.player == null:
 		return false
 	var player := entity.player
@@ -62,9 +65,9 @@ func can_see_player_now() -> bool:
 
 
 func _is_blocked(p: Player) -> bool:
-	raycast.global_position = entity.global_position + Vector3.UP * 1.6
-	raycast.target_position = raycast.to_local(p.global_position + Vector3.UP * 1.0)
+	raycast.target_position = raycast.to_local(p.global_position)
 	raycast.force_raycast_update()
+	print(raycast.get_collider())
 	return raycast.is_colliding()
 
 

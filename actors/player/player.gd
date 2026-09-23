@@ -7,6 +7,8 @@ const MOUSE_SENSITIVITY = 0.5
 
 @onready var head: Node3D = $Head
 
+var is_moving: bool = false
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -29,6 +31,11 @@ func handle_movement(delta: float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	if velocity.length() > 0:
+		is_moving = true
+	else:
+		is_moving = false
 
 	move_and_slide()
 

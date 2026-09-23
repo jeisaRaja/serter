@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cdkae514q0u66"]
 
 [ext_resource type="Script" uid="uid://dk670nm8tfrn6" path="res://levels/floor_01/floor_01.gd" id="1_rjey2"]
-[ext_resource type="PackedScene" uid="uid://dxihvvukwe32d" path="res://actors/player/player.tscn" id="1_umnyj"]
-[ext_resource type="PackedScene" uid="uid://tvrjcdujloc" path="res://actors/entity/entity.tscn" id="2_bweoo"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wf2kw"]
 vertices = PackedVector3Array(-10.25, 0.45, -3.75, -8.75, 0.45, -3.75, -9, 0.45, -9, -11, 0.45, -2.5, -19, 0.45, -9, -19, 0.45, -2.5, 10.5, 0.45, -3.75, 11.25, 0.45, -2.5, 12.75, 0.45, -2.5, 12.75, 0.45, -6, 14, 0.45, -9, 14, 0.45, -6.75, 15.25, 0.45, -6, 19, 0.45, -9, 15.25, 0.45, 5.25, 14, 0.45, 6, 14, 0.45, 9, 19, 0.45, 9, -10.25, 0.45, 1, -8.5, 0.45, 1, -8.5, 0.45, -1.25, -10.25, 0.45, -1.25, -11, 0.45, 2.25, -19, 0.45, 2.25, 10.5, 0.45, -1.25, 10.5, 0.45, 1, 11.25, 0.45, 2.25, 12.75, 0.45, 2.25, -10, 0.45, 9, -10, 0.45, 3.5, -19, 0.45, 9, 10.5, 0.45, 3.5, 12.75, 0.45, 5.25)
@@ -18,11 +16,11 @@ data = PackedVector3Array(-5.180786, -1.5, 0.15, -5.180786, -1.5, -0.15, -5.1807
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_umnyj"]
 data = PackedVector3Array(-20, -0.05, 10, -20, -0.05, -10, -20, 0.05, -10, 20, -0.05, -10, -20, -0.05, -10, -20, -0.05, 10, -20, 0.05, -10, -20, -0.05, -10, 20, -0.05, -10, -20, 0.05, -10, -20, 0.05, 10, -20, -0.05, 10, -20, -0.05, 10, -20, 0.05, 10, 20, 0.05, 10, 20, 0.05, 10, -20, 0.05, 10, -20, 0.05, -10, -20, -0.05, 10, 20, -0.05, 10, 20, -0.05, -10, 20, 0.05, 10, 20, -0.05, 10, -20, -0.05, 10, 20, -0.05, -10, 20, -0.05, 10, 20, 0.05, 10, 20, -0.05, -10, 20, 0.05, -10, -20, 0.05, -10, -20, 0.05, -10, 20, 0.05, -10, 20, 0.05, 10, 20, 0.05, 10, 20, 0.05, -10, 20, -0.05, -10)
 
-[node name="Floor01" type="Node3D" unique_id=1956236836]
+[node name="Floor01" type="Node3D" unique_id=1956236836 node_paths=PackedStringArray("player_spawn_marker")]
 script = ExtResource("1_rjey2")
-
-[node name="Player" parent="." unique_id=68945334 instance=ExtResource("1_umnyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.031578, 3.0440717, -6.6174192)
+player_spawn_marker = {
+&"first": NodePath("PlayerSpawns/Spawn0")
+}
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=616493242]
 transform = Transform3D(-3.090862e-08, -0.7071068, 0.7071068, -3.090862e-08, 0.7071068, 0.7071068, -1, 0, -4.3711392e-08, 21.413704, 6.2245493, 0)
@@ -35,9 +33,6 @@ transform = Transform3D(-3.090862e-08, -0.7071068, 0.7071068, -3.090862e-08, 0.7
 light_color = Color(0.93982965, 0.89811563, 0.72580314, 1)
 light_energy = 2.0
 spot_range = 20.0
-
-[node name="Entity" parent="." unique_id=1536275457 instance=ExtResource("2_bweoo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9499999, 7)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=662718337]
 navigation_mesh = SubResource("NavigationMesh_wf2kw")
@@ -90,3 +85,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.559687, 0.25611305, -7.145
 
 [node name="Test2" type="Marker3D" parent="Checkpoints" unique_id=1450346836 groups=["checkpoint"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.559687, 0.25611305, 7.124748)
+
+[node name="EntitySpawn" type="Marker3D" parent="." unique_id=528377471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.331743, 2.6569438, 0)
+
+[node name="PlayerSpawns" type="Node3D" parent="." unique_id=1310571076]
+
+[node name="Spawn0" type="Marker3D" parent="PlayerSpawns" unique_id=579818152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.955865, 2.2109363, 0)

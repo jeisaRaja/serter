@@ -21,9 +21,17 @@ func physics_process(delta: float):
 func start() -> void:
 	if initial_state:
 		_change_state(initial_state.name.to_lower(), { })
+	else:
+		push_warning("StateMachine has no initial_state set.")
+
+
+func handle_event(event: StringName, data: Dictionary = { }) -> void:
+	if current:
+		current.handle_event(event, data)
 
 
 func _on_transition_requested(state_name: StringName, data: Dictionary):
+	print("requesting change state to %s" % state_name)
 	_change_state(state_name, data)
 
 

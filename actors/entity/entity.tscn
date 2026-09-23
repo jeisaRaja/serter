@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://ct7642fqigmdv" path="res://actors/entity/states/entity_state_patrol.gd" id="2_pdfyc"]
 [ext_resource type="Script" uid="uid://l10mbjhn0v47" path="res://actors/entity/senses/entity_vision.gd" id="2_usgiq"]
 [ext_resource type="Script" uid="uid://dfkwt2iq22m6q" path="res://systems/state_machine/state_machine.gd" id="2_wp4v0"]
+[ext_resource type="Script" uid="uid://ssphgo2tx3jn" path="res://actors/entity/senses/entity_perception.gd" id="3_3wjif"]
 [ext_resource type="Script" uid="uid://ddbl6apcbq4x7" path="res://actors/entity/states/entity_state_chase.gd" id="4_lywof"]
 [ext_resource type="Script" uid="uid://p3y1pf5xs5nt" path="res://actors/entity/states/entity_state_investigate.gd" id="5_yse61"]
+[ext_resource type="Script" uid="uid://c60bfyssvvla8" path="res://actors/entity/states/entity_state_search.gd" id="8_4nsah"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wf2kw"]
 radius = 0.3
@@ -14,9 +16,6 @@ height = 1.8
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8q6lw"]
 radius = 0.3
 height = 1.8
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_lywof"]
-radius = 10.0
 
 [node name="Entity" type="CharacterBody3D" unique_id=1536275457]
 script = ExtResource("1_8q6lw")
@@ -31,26 +30,19 @@ shape = SubResource("CapsuleShape3D_8q6lw")
 
 [node name="Ears" type="Node" parent="Senses" unique_id=1652322630]
 
-[node name="Proximity" type="Area3D" parent="Senses" unique_id=1214529367]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Senses/Proximity" unique_id=909173604]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2716603, 0, 3.1785436e-07)
-shape = SubResource("CylinderShape3D_lywof")
-
-[node name="Eyes" type="Node3D" parent="Senses" unique_id=1858543749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68, 0)
-
-[node name="Raycast" type="RayCast3D" parent="Senses/Eyes" unique_id=658309461]
-target_position = Vector3(0, 0, -20)
-debug_shape_custom_color = Color(0.9095624, 0.49163175, 0.7737706, 1)
-
-[node name="RaycastTimer" type="Timer" parent="Senses/Eyes" unique_id=2011319254]
-
-[node name="EntityVision" type="Node" parent="Senses" unique_id=2103327876 node_paths=PackedStringArray("raycast")]
+[node name="Vision" type="Node" parent="Senses" unique_id=2103327876 node_paths=PackedStringArray("raycast")]
 script = ExtResource("2_usgiq")
-raycast = NodePath("../Eyes/Raycast")
+raycast = NodePath("../RayCast3D")
 metadata/_custom_type_script = "uid://l10mbjhn0v47"
+
+[node name="RayCast3D" type="RayCast3D" parent="Senses" unique_id=528344615]
+target_position = Vector3(0, 0, -5)
+debug_shape_custom_color = Color(0.637962, 0.86516845, 0.84938717, 1)
+debug_shape_thickness = 5
+
+[node name="Perception" type="Node" parent="Senses" unique_id=1893975278]
+script = ExtResource("3_3wjif")
+metadata/_custom_type_script = "uid://ssphgo2tx3jn"
 
 [node name="Memory" type="Node" parent="." unique_id=1209084185]
 
@@ -74,3 +66,7 @@ metadata/_custom_type_script = "uid://ddbl6apcbq4x7"
 [node name="Investigate" type="Node" parent="StateMachine" unique_id=1599905890]
 script = ExtResource("5_yse61")
 metadata/_custom_type_script = "uid://p3y1pf5xs5nt"
+
+[node name="Search" type="Node" parent="StateMachine" unique_id=780841030]
+script = ExtResource("8_4nsah")
+metadata/_custom_type_script = "uid://c60bfyssvvla8"
