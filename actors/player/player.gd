@@ -6,8 +6,12 @@ const JUMP_VELOCITY = 4.5
 const MOUSE_SENSITIVITY = 0.5
 
 @onready var head: Node3D = $Head
+@onready var footsteps_audio: AudioStreamPlayer3D = $Audio/Footsteps
 
 var is_moving: bool = false
+var footstep_distance_threshold: float = 2
+var min_movement_speed: float = 0.5
+var distance_now: float = 0.0
 
 
 func _ready():
@@ -16,9 +20,10 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
+	handle_footsteps_noise(delta)
 
 
-func handle_movement(delta: float):
+func handle_movement(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -38,6 +43,19 @@ func handle_movement(delta: float):
 		is_moving = false
 
 	move_and_slide()
+
+
+func handle_footsteps_noise(delta: float) -> void:
+	var velocity_xy := Vector2(velocity.x, velocity.z)
+	if velocity_xy.length() == 0:
+		distance_now = 0
+		return
+
+	distance_now += velocity_xy.length() * delta
+	if distance_now >= footstep_distance_threshold:
+		distance_now = 0.0
+		Events.noise_emitted.emit(NoiseEvent.new(global_position, 1.0, NoiseEvent.Type.FOOTSTEP))
+		footsteps_audio.play()
 
 
 func _unhandled_input(event: InputEvent) -> void:

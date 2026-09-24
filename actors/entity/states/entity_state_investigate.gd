@@ -3,6 +3,7 @@ extends State
 
 const LOOK_DURATION: float = 2.0
 
+var last_known_velocity: Vector3 = Vector3.ZERO
 var look_timer: float = 0.0
 var target_strength: float = 0.0
 
@@ -21,10 +22,14 @@ func physics_process(delta: float) -> void:
 	if e.navigation_agent.is_navigation_finished():
 		look_timer += delta
 		if look_timer > LOOK_DURATION:
-			transition_requested.emit(&"search", { "last_pos": e.global_position })
+			transition_requested.emit(
+				&"search",
+				{ "last_pos": e.global_position, "vel": last_known_velocity },
+			)
 
 
 func handle_event(event: StringName, data: Dictionary = { }) -> void:
+	print(event, data)
 	var e := owner_node as Entity
 	match event:
 		&"player_spotted":

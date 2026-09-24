@@ -5,9 +5,9 @@ signal confidence_crossed_chase(pos: Vector3)
 signal suspicion_crossed_investigate(pos: Vector3)
 
 const SUSPICION_DECAY: float = 8.0
-const CONFIDENCE_DECAY: float = 15.0
+const CONFIDENCE_DECAY: float = 10.0
 const INVESTIGATE_THRESHOLD: float = 40.0
-const CHASE_THRESHOLD_BASE: float = 70.0
+const CHASE_THRESHOLD_BASE: float = 60.0
 const CHASE_THRESHOLD_JUMPY: float = 40.0
 const JUMPY_WINDOW: float = 15.0
 
@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 
 	var chase_threshold := _get_dynamic_chase_threshold()
 
+	# print("confidence is ", confidence)
 	if confidence >= chase_threshold:
 		confidence_crossed_chase.emit(last_seen_pos)
 		confidence = 0.0
@@ -38,20 +39,28 @@ func _process(delta: float) -> void:
 
 func on_noise(strength: float, pos: Vector3) -> void:
 	suspicion += strength * 8.0
-	confidence += strength * 1.0
+	confidence += strength * 10.0
 	last_seen_pos = pos
 	_clamp_meters()
+
+
+func force_spot(pos: Vector3) -> void:
+	last_seen_pos = pos
+	last_seen_time = Time.get_ticks_msec() / 1000.0
+	confidence = 100.0
+	confidence_crossed_chase.emit(pos)
+	confidence = 0.0
 
 
 func on_vision(strength: float, is_clear: bool, pos: Vector3) -> void:
 	if strength <= 0.0:
 		return
 	if is_clear:
-		suspicion += strength * 3.0
-		confidence += strength * 10.0
+		suspicion += strength * 10.0
+		confidence += strength * 20.0
 	else:
 		suspicion += strength * 5.0
-		confidence += strength * 4.0
+		confidence += strength * 10.0
 	last_seen_pos = pos
 	last_seen_time = Time.get_ticks_msec() / 1000.0
 	_clamp_meters()

@@ -23,11 +23,7 @@ func physics_process(delta: float) -> void:
 	var can_see := e.vision.can_see_player_now()
 
 	if can_see:
-		last_known_velocity = e.player.global_position - last_known_pos
-		last_known_pos = e.player.global_position
-		lost_sight_timer = 0.0
-		var predicted := last_known_pos + last_known_velocity * 0.5
-		e.go_to(predicted)
+		e.go_to(e.player.global_position)
 	else:
 		lost_sight_timer += delta
 
@@ -41,7 +37,11 @@ func physics_process(delta: float) -> void:
 		(not can_see and e.navigation_agent.is_navigation_finished())
 		or lost_sight_timer >= LOST_SIGHT_GRACE
 	):
-		transition_requested.emit(&"investigate", { "pos": last_known_pos })
+		print("to investigate")
+		transition_requested.emit(
+			&"investigate",
+			{ "pos": e.player.global_position, "vel": last_known_velocity },
+		)
 
 
 func handle_event(_event: StringName, _data: Dictionary = { }) -> void:

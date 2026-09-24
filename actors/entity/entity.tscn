@@ -10,11 +10,11 @@
 [ext_resource type="Script" uid="uid://c60bfyssvvla8" path="res://actors/entity/states/entity_state_search.gd" id="8_4nsah"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wf2kw"]
-radius = 0.3
+radius = 0.2
 height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8q6lw"]
-radius = 0.3
+radius = 0.2
 height = 1.8
 
 [node name="Entity" type="CharacterBody3D" unique_id=1536275457]
@@ -36,6 +36,7 @@ raycast = NodePath("../RayCast3D")
 metadata/_custom_type_script = "uid://l10mbjhn0v47"
 
 [node name="RayCast3D" type="RayCast3D" parent="Senses" unique_id=528344615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65130293, 0)
 target_position = Vector3(0, 0, -5)
 debug_shape_custom_color = Color(0.637962, 0.86516845, 0.84938717, 1)
 debug_shape_thickness = 5
@@ -49,6 +50,7 @@ metadata/_custom_type_script = "uid://ssphgo2tx3jn"
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1744600105]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=69797615]
+debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=283661893 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_wp4v0")

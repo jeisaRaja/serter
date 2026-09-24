@@ -27,7 +27,6 @@ func change_level(level_scene: PackedScene, spawn_marker_name: StringName) -> vo
 
 	if spawn_marker_name != &"" and new_level.has_method("get_player_spawn_marker"):
 		var marker: Marker3D = new_level.get_player_spawn_marker("first")
-		print("marker is ", marker)
 		if marker:
 			player.global_position = marker.global_position
 
