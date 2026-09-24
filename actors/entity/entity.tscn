@@ -17,8 +17,9 @@ height = 1.8
 radius = 0.2
 height = 1.8
 
-[node name="Entity" type="CharacterBody3D" unique_id=1536275457]
+[node name="Entity" type="CharacterBody3D" unique_id=1536275457 node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("1_8q6lw")
+navigation_agent = NodePath("Feet/NavigationAgent3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=408351654]
 mesh = SubResource("CapsuleMesh_wf2kw")
@@ -49,9 +50,6 @@ metadata/_custom_type_script = "uid://ssphgo2tx3jn"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1744600105]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=69797615]
-debug_enabled = true
-
 [node name="StateMachine" type="Node" parent="." unique_id=283661893 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_wp4v0")
 initial_state = NodePath("Patrol")
@@ -72,3 +70,11 @@ metadata/_custom_type_script = "uid://p3y1pf5xs5nt"
 [node name="Search" type="Node" parent="StateMachine" unique_id=780841030]
 script = ExtResource("8_4nsah")
 metadata/_custom_type_script = "uid://c60bfyssvvla8"
+
+[node name="Feet" type="Node3D" parent="." unique_id=1190365617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9000366, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Feet" unique_id=69797615]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+debug_enabled = true

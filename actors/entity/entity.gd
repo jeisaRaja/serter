@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Entity
 
-@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@export var navigation_agent: NavigationAgent3D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var vision: EntityVision = $Senses/Vision
 @onready var perception: EntityPerception = $Senses/Perception

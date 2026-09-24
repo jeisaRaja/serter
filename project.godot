@@ -67,6 +67,11 @@ move_right={
 3d_physics/layer_2="player"
 3d_physics/layer_3="entity"
 
+[navigation]
+
+3d/default_cell_size=0.1
+3d/default_cell_height=0.1
+
 [physics]
 
 common/physics_jitter_fix=0.0
