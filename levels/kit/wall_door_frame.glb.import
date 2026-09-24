@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8wql62ejfxn3"
-path="res://.godot/imported/room_a.glb-b1c7587b1531182f2eb8149eea0fc1b7.scn"
+uid="uid://cph7gvc148p70"
+path="res://.godot/imported/wall_door_frame.glb-7a5d66dfb967d64028e7e16e6ed6c557.scn"
 
 [deps]
 
-source_file="res://levels/kit/room_a/room_a.glb"
-dest_files=["res://.godot/imported/room_a.glb-b1c7587b1531182f2eb8149eea0fc1b7.scn"]
+source_file="res://levels/kit/wall_door_frame.glb"
+dest_files=["res://.godot/imported/wall_door_frame.glb-7a5d66dfb967d64028e7e16e6ed6c557.scn"]
 
 [params]
 
