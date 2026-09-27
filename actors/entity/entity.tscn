@@ -8,14 +8,18 @@
 [ext_resource type="Script" uid="uid://ddbl6apcbq4x7" path="res://actors/entity/states/entity_state_chase.gd" id="4_lywof"]
 [ext_resource type="Script" uid="uid://p3y1pf5xs5nt" path="res://actors/entity/states/entity_state_investigate.gd" id="5_yse61"]
 [ext_resource type="Script" uid="uid://c60bfyssvvla8" path="res://actors/entity/states/entity_state_search.gd" id="8_4nsah"]
+[ext_resource type="AudioStream" uid="uid://bc26ou7fwv5dh" path="res://shared/audio/monster growl.ogg" id="9_p3ar4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wf2kw"]
-radius = 0.2
-height = 1.8
+radius = 0.15
+height = 1.7
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8q6lw"]
 radius = 0.2
 height = 1.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_wf2kw"]
+size = Vector3(0.3701172, 0.1921997, 0.40478516)
 
 [node name="Entity" type="CharacterBody3D" unique_id=1536275457 node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("1_8q6lw")
@@ -77,4 +81,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9000366, 0)
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Feet" unique_id=69797615]
 path_desired_distance = 0.5
 target_desired_distance = 0.5
-debug_enabled = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1714966937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014284849, 0.65682566, -0.28228748)
+mesh = SubResource("BoxMesh_wf2kw")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." unique_id=252236962]
+stream = ExtResource("9_p3ar4")
+volume_db = 1.0
+autoplay = true

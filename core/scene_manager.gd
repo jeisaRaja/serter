@@ -29,6 +29,7 @@ func change_level(level_scene: PackedScene, spawn_marker_name: StringName) -> vo
 		var marker: Marker3D = new_level.get_player_spawn_marker("first")
 		if marker:
 			player.global_position = marker.global_position
+			player.rotation = marker.rotation
 
 	if new_level.has_method("get_patrol_checkpoints"):
 		entity.set_checkpoints(new_level.get_patrol_checkpoints())

@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://cdkae514q0u66"]
 
 [ext_resource type="Script" uid="uid://dk670nm8tfrn6" path="res://levels/floor_01/floor_01.gd" id="1_rjey2"]
-[ext_resource type="MeshLibrary" uid="uid://bnj05jkj2t2f5" path="res://levels/kit/office_kit.tres" id="2_bweoo"]
+[ext_resource type="NavigationMesh" uid="uid://brxtdi7utbr2e" path="res://levels/floor_01/navigation_mesh.tres" id="2_3oavr"]
+[ext_resource type="PackedScene" uid="uid://dbsod1yuymxxf" path="res://levels/kit/glbs/floor_1_glb.glb" id="2_bweoo"]
+[ext_resource type="VoxelGIData" uid="uid://b766hkhuibxqg" path="res://levels/floor_01/floor_01.VoxelGI_data.res" id="3_rjey2"]
+[ext_resource type="Environment" uid="uid://du1ne1uywjcjs" path="res://levels/floor_01/floor_01_environment.tres" id="4_v6wpg"]
+[ext_resource type="PackedScene" uid="uid://7lxhlppcgqkp" path="res://levels/props/light_objects/ceiling_light.tscn" id="6_sb3ui"]
+[ext_resource type="AudioStream" uid="uid://dmy3kdss38mb0" path="res://shared/audio/abandoned industrial background noise.ogg" id="7_2dc38"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_wf2kw"]
-vertices = PackedVector3Array(-7.5, 1.1500001, -5.5, -7.0999994, 1.1500001, -5.6, -7.0999994, 1.1500001, -6.4, -8.5, 1.1500001, -6.4, -7.7999997, 1.1500001, -5.1, -8.5, 1.1500001, -1.0999999, -7.7999997, 1.1500001, -1.1999998, -2.3999996, 1.1500001, -1.2999997, -2.2999997, 1.1500001, -0.7999997, -1.7999997, 1.1500001, -0.9000001, -6.7, 1.1500001, -5.5, -1.4999995, 1.1500001, -5.5, -1, 1.1500001, -5.6, -1, 1.1500001, -6.4, -2.7999997, 1.1500001, -1.5999999, -1.7999997, 1.1500001, -5.1, -6.3999996, 1.1500001, -5.1, -6.3999996, 1.1500001, -1.5999999, -0.5999994, 1.1500001, -5.5, -0.29999924, 1.1500001, -5.1, 2.4000006, 1.1500001, -6.4, -0.29999924, 1.1500001, -1.5999999, 2.4000006, 1.1500001, -1.5999999, 3.4000006, 1.1500001, -1.5, 3.7000008, 1.1500001, -0.7999997, 6.4000006, 1.1500001, -0.7999997, 6.4000006, 1.1500001, -6.4, -7.7999997, 1.1500001, -0.5999999, -7.2999997, 1.1500001, -0.099999905, -8.4, 1.1500001, 8.400001, -3.2999997, 1.1500001, 8.400001, -3.3999996, 1.1500001, -0.099999905, -1.4999995, 1.1500001, -0.19999981, -2.6, 1.1500001, -0.19999981, -0.6999998, 1.1500001, -0.099999905, -0.79999924, 1.1500001, 8.400001, 3.6000004, 1.1500001, -0.4000001, 3.2000008, 1.1500001, -0.099999905, 6.4000006, 1.1500001, 8.400001)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 2), PackedInt32Array(2, 4, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(4, 5, 3), PackedInt32Array(9, 8, 7), PackedInt32Array(10, 1, 2), PackedInt32Array(13, 12, 11), PackedInt32Array(7, 14, 9), PackedInt32Array(9, 14, 15), PackedInt32Array(10, 2, 16), PackedInt32Array(16, 2, 15), PackedInt32Array(15, 2, 11), PackedInt32Array(11, 2, 13), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(18, 12, 13), PackedInt32Array(18, 13, 19), PackedInt32Array(19, 13, 20), PackedInt32Array(21, 19, 22), PackedInt32Array(22, 19, 20), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 20), PackedInt32Array(23, 22, 20), PackedInt32Array(5, 6, 27), PackedInt32Array(27, 28, 5), PackedInt32Array(5, 28, 29), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(8, 9, 33), PackedInt32Array(33, 9, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(33, 34, 31), PackedInt32Array(31, 34, 35), PackedInt32Array(31, 35, 30), PackedInt32Array(25, 36, 24), PackedInt32Array(36, 25, 37), PackedInt32Array(37, 25, 38), PackedInt32Array(34, 37, 35), PackedInt32Array(35, 37, 38)]
-cell_size = 0.1
-cell_height = 0.1
-agent_radius = 0.6
-agent_max_climb = 0.2
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf2kw"]
+size = Vector3(11.688538, 0.7003174, 24.04863)
 
-[sub_resource type="Environment" id="Environment_wf2kw"]
-background_mode = 1
+[sub_resource type="BoxShape3D" id="BoxShape3D_33rug"]
+size = Vector3(8.917358, 3.4588623, 0.27005005)
 
 [node name="Floor01" type="Node3D" unique_id=1956236836 node_paths=PackedStringArray("player_spawn_marker")]
 script = ExtResource("1_rjey2")
@@ -21,21 +21,17 @@ player_spawn_marker = {
 }
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=662718337]
-navigation_mesh = SubResource("NavigationMesh_wf2kw")
+navigation_mesh = ExtResource("2_3oavr")
 
-[node name="Floors" type="GridMap" parent="NavigationRegion3D" unique_id=303126598]
-mesh_library = ExtResource("2_bweoo")
-bake_navigation = true
-data = {
-"cells": PackedInt32Array(65534, 1, 1048576, 0, 1, 1048576, 0, 3, 1048576, 65534, 3, 1048576, 0, 65535, 1048576, 65534, 65535, 1048576, 0, 65533, 1048576, 65534, 65533, 1048576, 2, 65533, 1048576, 2, 65535, 1048576, 2, 1, 1048576, 2, 3, 1048576, 65532, 3, 524288, 65532, 2, 524288, 65532, 1, 524288, 65532, 0, 524288, 65532, 65535, 524288, 65532, 65534, 524288, 65532, 65533, 524288)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=312430434]
 
-[node name="GridMap" type="GridMap" parent="NavigationRegion3D" unique_id=633607477]
-mesh_library = ExtResource("2_bweoo")
-data = {
-"cells": PackedInt32Array(65533, 4, 655363, 65534, 65535, 655363, 1, 65535, 655363)
-}
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2126220202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9945374, -0.14984131, 7.9809494)
+shape = SubResource("BoxShape3D_wf2kw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=2002986734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68536377, 1.2294312, 8.100449)
+shape = SubResource("BoxShape3D_33rug")
 
 [node name="Checkpoints" type="Node3D" parent="." unique_id=1263376171]
 
@@ -46,22 +42,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8036728, 1.7229924, 4.3824
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6812911, 1.8541241, -5.9858856)
 
 [node name="EntitySpawn" type="Marker3D" parent="." unique_id=528377471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1937551, 2.5627055, -0.8997545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4743576, 2.5627055, 3.8877687)
 
 [node name="PlayerSpawns" type="Node3D" parent="." unique_id=1310571076]
 
 [node name="Spawn0" type="Marker3D" parent="PlayerSpawns" unique_id=579818152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4887948, 2.619167, -1.1480525)
+transform = Transform3D(-0.45435128, 0, -0.8908226, 0, 1, 0, 0.8908226, 0, -0.45435128, -0.048763752, -0.060823202, 15.013746)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1782394141]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1985135, 2)
+[node name="floor_1_glb" parent="." unique_id=783055433 instance=ExtResource("2_bweoo")]
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1698156117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.396847, -6.3578568)
+[node name="AreaLight3D2" type="AreaLight3D" parent="." unique_id=1904723168]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.5775964, 3.0208354, 1.0043163)
+shadow_enabled = true
+shadow_bias = 0.02
+shadow_normal_bias = 1.5
+shadow_reverse_cull_face = true
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1002468056]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5760794, 4.0662737, 6.3571696)
-omni_range = 20.0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1469955919]
+environment = ExtResource("4_v6wpg")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=240810459]
-environment = SubResource("Environment_wf2kw")
+[node name="VoxelGI" type="VoxelGI" parent="." unique_id=248729876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0368652, 1.5401611, 7.9433746)
+size = Vector3(12.135254, 3.2194824, 23.86905)
+data = ExtResource("3_rjey2")
+
+[node name="CeilingLight" parent="." unique_id=52016522 instance=ExtResource("6_sb3ui")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.6211491, 2.9420137, 12.651911)
+light_energy = 2.7796872
+area_range = 5.0
+base_energy = 3.0
+flicker_speed = 0.30000000000000004
+bulb_intensity_range = 0.5
+bulb_flicker_chance = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1980832252]
+stream = ExtResource("7_2dc38")
+volume_db = -8.0
+autoplay = true

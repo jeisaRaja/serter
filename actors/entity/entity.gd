@@ -50,6 +50,13 @@ func set_player_ref(p: Player):
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_process(delta)
+	_handle_gravity(delta)
+
+
+func _handle_gravity(delta: float):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	pass
 
 
 func activate():
