@@ -7,6 +7,16 @@
 radius = 0.4
 height = 1.8
 
+[sub_resource type="BoxMesh" id="BoxMesh_wf2kw"]
+size = Vector3(0.13476563, 0.15234375, 0.3955078)
+
+[sub_resource type="Gradient" id="Gradient_ilk7j"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_15y17"]
+gradient = SubResource("Gradient_ilk7j")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody3D" unique_id=68945334 groups=["player"]]
 collision_layer = 2
 collision_mask = 5
@@ -17,11 +27,32 @@ physics_interpolation_mode = 1
 shape = SubResource("CapsuleShape3D_wf2kw")
 
 [node name="Head" type="Node3D" parent="." unique_id=1756125748]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55398613, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1191650251]
 physics_interpolation_mode = 1
 fov = 70.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Head/Camera3D" unique_id=45481585]
+
+[node name="LeftHand" type="Node3D" parent="Head" unique_id=1833235081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.35, -0.4)
+
+[node name="Flashlight" type="MeshInstance3D" parent="Head/LeftHand" unique_id=421328683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.032714874)
+mesh = SubResource("BoxMesh_wf2kw")
+
+[node name="Flashlight" type="SpotLight3D" parent="Head/LeftHand/Flashlight" unique_id=1186716980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.21938324)
+light_color = Color(0.85882354, 0.8235294, 0.59607846, 1)
+light_projector = SubResource("GradientTexture2D_15y17")
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 35.0
+spot_angle_attenuation = 1.5
+
+[node name="RightHand" type="Node3D" parent="Head" unique_id=1733176228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.35, -0.4)
 
 [node name="Audio" type="Node3D" parent="." unique_id=1037998851]
 

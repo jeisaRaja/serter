@@ -52,8 +52,6 @@ metadata/_custom_type_script = "uid://ssphgo2tx3jn"
 
 [node name="Memory" type="Node" parent="." unique_id=1209084185]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1744600105]
-
 [node name="StateMachine" type="Node" parent="." unique_id=283661893 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_wp4v0")
 initial_state = NodePath("Patrol")
@@ -86,7 +84,7 @@ target_desired_distance = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014284849, 0.65682566, -0.28228748)
 mesh = SubResource("BoxMesh_wf2kw")
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="." unique_id=252236962]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1274659837]
 stream = ExtResource("9_p3ar4")
-volume_db = 1.0
 autoplay = true
+bus = &"SFX"
