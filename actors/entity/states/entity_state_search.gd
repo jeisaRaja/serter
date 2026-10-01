@@ -18,7 +18,6 @@ func enter(data: Dictionary = { }) -> void:
 	var e := owner_node as Entity
 	var origin: Vector3 = data.get("last_pos", e.global_position)
 	var search_dir: Vector3 = data.get("vel", -e.global_transform.basis.z)
-	print(search_dir)
 	points = _generate_points(origin, search_dir)
 	index = 0
 	start_time = Time.get_ticks_msec() / 1000.0
@@ -76,6 +75,7 @@ func physics_process(delta: float) -> void:
 		return
 
 	if _pausing:
+		e.velocity = Vector3.ZERO
 		_pause_timer -= delta
 		if _pause_timer <= 0.0:
 			_pausing = false
@@ -96,8 +96,5 @@ func handle_event(event: StringName, data: Dictionary = { }) -> void:
 	match event:
 		&"player_spotted":
 			transition_requested.emit(&"chase", data)
-		&"noise_heard":
-			if data.get("strength", 0.0) > 0.3:
-				points = _generate_points(data.pos, Vector3.ZERO)
-				index = 0
-				_pausing = false
+		&"suspicious":
+			transition_requested.emit(&"investigate", data)

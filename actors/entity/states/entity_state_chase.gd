@@ -37,7 +37,6 @@ func physics_process(delta: float) -> void:
 		(not can_see and e.navigation_agent.is_navigation_finished())
 		or lost_sight_timer >= LOST_SIGHT_GRACE
 	):
-		print("to investigate")
 		transition_requested.emit(
 			&"investigate",
 			{ "pos": e.player.global_position, "vel": last_known_velocity },

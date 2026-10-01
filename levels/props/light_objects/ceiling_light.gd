@@ -1,13 +1,13 @@
-# @tool
 extends AreaLight3D
 
 @export var base_energy: float = 1.0
+@export var flicker: bool = false
 @export_range(0.1, 3.0, 0.1, "suffix:x") var flicker_speed: float = 1.0
 
 @export_group("Bulb Settings")
 @export_range(0.0, 1.0) var bulb_intensity_range: float = 0.3
 @export_range(0.0, 1.0) var bulb_flicker_chance: float = 0.1
-@export_range(0.01, 1.0, 0.01, "suffix:s") var bulb_check_interval: float = 0.1
+@export_range(0.01, 3.0, 0.01, "suffix:s") var bulb_check_interval: float = 0.1
 @export_range(0.0, 20.0) var bulb_smooth_speed: float = 10.0
 @export var bulb_snap: bool = true
 
@@ -25,7 +25,8 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	_flicker_process(delta)
+	if flicker:
+		_flicker_process(delta)
 
 
 func _flicker_process(delta: float) -> void:
@@ -40,6 +41,9 @@ func _flicker_process(delta: float) -> void:
 		else:
 			target_energy = base_energy
 
+	else:
+		return
+
 	if bulb_snap:
 		current_energy = target_energy
 	else:
@@ -51,11 +55,13 @@ func _flicker_process(delta: float) -> void:
 		mat = light_object.get_active_material(0) as StandardMaterial3D
 
 	var energy_ratio: float = current_energy / base_energy if base_energy > 0.0 else 0.0
-
 	if mat:
-		if energy_ratio < 0.7:
-			mat.emission_energy_multiplier = 0.0
-		else:
-			mat.emission_energy_multiplier = energy_ratio * 1.0
+		mat.emission_energy_multiplier = energy_ratio
+		# if energy_ratio < 0.9:
+		# 	mat.emission_energy_multiplier = 0.3
+		# elif energy_ratio < 0.6:
+		# 	mat.emission_energy_multiplier = 0.0
+		# else:
+		# 	mat.emission_energy_multiplier = energy_ratio * 1.0
 
 	light_energy = current_energy

@@ -17,8 +17,8 @@ func _on_noise_emitted(e: NoiseEvent):
 	if dist > e.loudness:
 		return
 
-	var from := entity.global_position + Vector3.UP * 1.0
-	var to := e.position + Vector3.UP * 0.5
+	var from := entity.global_position
+	var to := e.position
 	var space_state := entity.get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(from, to)
 	query.collision_mask = 1

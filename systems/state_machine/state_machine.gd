@@ -35,6 +35,7 @@ func _on_transition_requested(state_name: StringName, data: Dictionary):
 
 
 func _change_state(state_name: StringName, data: Dictionary) -> void:
+	UiManager.notify(state_name)
 	var key := String(state_name).to_lower()
 	if not states.has(key):
 		push_error("No state named: %s" % state_name)
